@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2025",
+    "paths": {
+      "@/*": ["./*"],
+      "@apiDatabase/constants": [
+        "./node_modules/ta_data_mas/packages/constants/src/index.ts"
+      ],
+      "@apiDatabase/types": [
+        "./node_modules/ta_data_mas/packages/types/src/index.ts"
+      ]
+    }
+  }
+}
