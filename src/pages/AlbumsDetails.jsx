@@ -49,7 +49,7 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
         </div>
       </section>
 
-      <ol className="mt-8 min-w-0 px-3 text-slate-300">
+      <ol className="mt-8 min-w-0 px-3 pb-64 text-slate-300 lg:pb-32">
         {albumTracks.map((track, index) => (
           <li key={track.path} className="group flex min-w-0 items-center gap-2 border-b border-mist-400 py-3">
             <span className="w-6 shrink-0 text-slate-400">{index + 1}</span>
