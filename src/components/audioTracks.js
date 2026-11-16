@@ -24,6 +24,7 @@ const tracks = Object.entries(
     const album = musicData.find((item) => item.folder === track.albumFolder);
     return {
       ...track,
+      albumId: album?.id,
       album: album?.album ?? track.albumFolder,
       cover: album?.cover ?? (track.albumFolder === 'Podcasts' ? podcastCover : undefined),
     };

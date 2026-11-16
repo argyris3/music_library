@@ -53,6 +53,7 @@ const loadExternalLibrary = async () => {
       path: String(row.id ?? row.path ?? `${album.id}-${row.track_number ?? index}`),
       url,
       title,
+      albumId: album.id,
       album: album.album,
       albumFolder: album.folder,
       cover: album.cover ?? album.artistCover,

@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import PlayerContext from './playerContext';
 import useMusicLibrary from './useMusicLibrary';
+import getTracksForAlbum from '../utils/getTracksForAlbum';
 
 const PlayerProvider = ({ children }) => {
   const { tracks } = useMusicLibrary();
@@ -12,8 +13,8 @@ const PlayerProvider = ({ children }) => {
   const [queueError, setQueueError] = useState('');
   const requestId = useRef(0);
 
-  const playAlbum = useCallback((folder, shuffle = false) => {
-    const albumQueue = tracks.filter((track) => track.albumFolder === folder);
+  const playAlbum = useCallback((album, shuffle = false) => {
+    const albumQueue = getTracksForAlbum(tracks, album);
     if (albumQueue.length === 0) {
       setQueueError('This album has no playable tracks.');
       setIsPlaying(false);
@@ -31,7 +32,7 @@ const PlayerProvider = ({ children }) => {
   }, [tracks]);
 
   const playTrack = useCallback((track) => {
-    const albumQueue = tracks.filter((item) => item.albumFolder === track.albumFolder);
+    const albumQueue = getTracksForAlbum(tracks, { id: track.albumId, folder: track.albumFolder });
     const startIndex = albumQueue.findIndex((item) => item.path === track.path);
     if (startIndex === -1) {
       setQueueError('This track is not available.');

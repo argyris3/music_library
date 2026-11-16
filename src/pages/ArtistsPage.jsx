@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Mic, Play } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import groupAlbumsByArtist from '../utils/groupAlbumsByArtist';
+import getTracksForAlbum from '../utils/getTracksForAlbum';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
 
@@ -62,7 +63,7 @@ const ArtistsPage = ({ playlists, onAddTrackToPlaylist }) => {
                         <button
                           type="button"
                           aria-label={`Play ${album.album}`}
-                          onClick={() => playAlbum(album.folder)}
+                          onClick={() => playAlbum(album)}
                           className="shrink-0 cursor-pointer rounded-full p-2 text-slate-300 transition hover:bg-slate-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
                         >
                           <Play aria-hidden="true" className="h-5 w-5" />
@@ -75,8 +76,7 @@ const ArtistsPage = ({ playlists, onAddTrackToPlaylist }) => {
                       )}
                       <div className="mt-3 border-b border-mist-400" aria-hidden="true" />
                       <ol className="mt-4 font-medium text-slate-300">
-                        {tracks
-                          .filter((track) => track.albumFolder === album.folder)
+                        {getTracksForAlbum(tracks, album)
                           .map((track, index) => (
                             <li
                               key={track.path}

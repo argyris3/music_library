@@ -3,6 +3,7 @@ import { Play, Shuffle } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
+import getTracksForAlbum from '../utils/getTracksForAlbum';
 
 const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
   const [playlistTrackPath, setPlaylistTrackPath] = useState(null);
@@ -13,7 +14,7 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
   const album = selectedAlbum ?? albums.find((item) => String(item.id) === '2') ?? albums[0];
   if (!album) return <p className="mt-8 px-5 text-slate-400">Album not found.</p>;
 
-  const albumTracks = tracks.filter((track) => track.albumFolder === album.folder);
+  const albumTracks = getTracksForAlbum(tracks, album);
 
   return (
     <div className="mt-8 flex min-h-full flex-1 flex-col">
@@ -31,14 +32,14 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
             <button
               type="button"
               aria-label={`Shuffle ${album.album}`}
-              onClick={() => playAlbum(album.folder, true)}
+              onClick={() => playAlbum(album, true)}
               className="rounded-full bg-gray-600 px-2 py-2 text-slate-300 cursor-pointer"
             >
               <Shuffle aria-hidden="true" />
             </button>
             <button
               type="button"
-              onClick={() => playAlbum(album.folder)}
+              onClick={() => playAlbum(album)}
               className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 text-black cursor-pointer"
             >
               <Play aria-hidden="true" />
