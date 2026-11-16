@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Mic, Play } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { groupAlbumsByArtist } from '../assets2/data';
+import groupAlbumsByArtist from '../utils/groupAlbumsByArtist';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
 

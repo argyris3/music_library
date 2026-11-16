@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import staticAlbums from '../assets2/data';
-import staticTracks from '../components/audioTracks';
 import MusicLibraryContext from './musicLibraryContext';
-const dataSource = (import.meta.env.VITE_DATA_SOURCE || 'static').trim().toLowerCase();
+const dataSource = import.meta.env.VITE_DATA_SOURCE || 'external';
 
 const getRows = (result, tableName) => {
   if (result.error) throw new Error(`Could not load ${tableName}: ${result.error}`);
@@ -65,11 +63,16 @@ const loadExternalLibrary = async () => {
   return { albums, tracks };
 };
 
+const loadStaticLibrary = async () => {
+  const [albumsModule, tracksModule] = await Promise.all([
+    import('../assets2/data.js'),
+    import('../components/audioTracks.js'),
+  ]);
+  return { albums: albumsModule.default, tracks: tracksModule.default };
+};
+
 const getInitialState = () => {
-  if (dataSource === 'static') {
-    return { albums: staticAlbums, tracks: staticTracks, loading: false, error: '' };
-  }
-  if (dataSource === 'external') {
+  if (dataSource === 'static' || dataSource === 'external') {
     return { albums: [], tracks: [], loading: true, error: '' };
   }
   return {
@@ -84,10 +87,11 @@ const MusicLibraryProvider = ({ children }) => {
   const [library, setLibrary] = useState(getInitialState);
 
   useEffect(() => {
-    if (dataSource !== 'external') return undefined;
+    if (dataSource !== 'static' && dataSource !== 'external') return undefined;
 
     let active = true;
-    loadExternalLibrary()
+    const loadLibrary = dataSource === 'static' ? loadStaticLibrary : loadExternalLibrary;
+    loadLibrary()
       .then((externalLibrary) => {
         if (active) setLibrary({ ...externalLibrary, loading: false, error: '' });
       })
