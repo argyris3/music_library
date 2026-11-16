@@ -27,6 +27,7 @@ const genres = [
       'Joy Division',
       'If these trees could talk',
     ],
+    artistKeywords: ['Godspeed'],
   },
   {
     name: 'Jazz',
@@ -57,6 +58,7 @@ const ExplorePage = () => {
         (album) =>
           (album.genre && normalizeGenre(album.genre) === normalizeGenre(selectedGenre.name)) ||
           selectedGenre.artists?.includes(album.artist) ||
+          selectedGenre.artistKeywords?.some((keyword) => album.artist?.toLowerCase().includes(keyword.toLowerCase())) ||
           selectedGenre.folders?.includes(album.folder),
       )
     : [];
