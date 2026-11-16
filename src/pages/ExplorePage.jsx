@@ -16,7 +16,17 @@ const genres = [
   {
     name: 'Post Rock',
     image: postRock,
-    artists: ['Mogwai', 'Godspeed', 'Mono', 'Protomartyr', 'Joy Division', 'If these trees could talk'],
+    artists: [
+      'Mogwai',
+      'Godspeed',
+      'Godspeed You! Black Emperor',
+      'Godspeed You Black Emperor',
+      'Mono',
+      'Slint',
+      'Protomartyr',
+      'Joy Division',
+      'If these trees could talk',
+    ],
   },
   {
     name: 'Jazz',
@@ -41,9 +51,13 @@ const genres = [
 const ExplorePage = () => {
   const { albums } = useMusicLibrary();
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const normalizeGenre = (genre) => genre?.toLowerCase().replace(/[\s-]/g, '');
   const selectedAlbums = selectedGenre
     ? albums.filter(
-        (album) => selectedGenre.artists?.includes(album.artist) || selectedGenre.folders?.includes(album.folder),
+        (album) =>
+          (album.genre && normalizeGenre(album.genre) === normalizeGenre(selectedGenre.name)) ||
+          selectedGenre.artists?.includes(album.artist) ||
+          selectedGenre.folders?.includes(album.folder),
       )
     : [];
 
