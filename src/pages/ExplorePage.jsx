@@ -8,7 +8,7 @@ import hardRock from '../assets2/hardRock.jpg';
 import jazz from '../assets2/jazz.jpg';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import postRock from '../assets2/postRock.jpg';
-import soundtrack from '../assets/soundtrack.jpg';
+import soundtrack from '../assets2/post.jpg';
 
 const genres = [
   { name: 'Classic Rock', image: classicRock, artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd'] },

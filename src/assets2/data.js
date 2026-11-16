@@ -1,13 +1,10 @@
-import cover1 from '../assets/data/Substance/cover.jpg';
-import cover2 from '../assets/data/Inside/cover.jpg';
-import cover3 from '../assets/data/Mirror/cover.jpg';
-import cover4 from '../assets/data/Unleashed/cover.jpg';
-import cover5 from '../assets/data/LostianGirl/cover.jpg';
-import cover6 from '../assets/data/ Mogwai Young Team/albumart.jpg';
-import joy from '../assets/data/joy.jpg';
-import massive from '../assets/data/massive.jpg';
-import thievery from '../assets/data/thievery.jpg';
-import eloy from '../assets/data/eloy.jpg';
+const imageFiles = Object.entries(
+  import.meta.glob('../assets/data/**/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }),
+);
+const findImage = (assetPath) => imageFiles.find(([path]) => path.endsWith(assetPath))?.[1];
 
 const musicData = [
   {
@@ -15,32 +12,32 @@ const musicData = [
     folder: 'Substance',
     artist: 'Joy Division',
     album: 'Substance',
-    artistCover: joy,
-    cover: cover1,
+    artistCover: findImage('data/joy.jpg'),
+    cover: findImage('data/Substance/cover.jpg'),
   },
   {
     id: 1,
     folder: 'Inside',
     artist: 'Eloy',
     album: 'Inside',
-    artistCover: eloy,
-    cover: cover2,
+    artistCover: findImage('data/eloy.jpg'),
+    cover: findImage('data/Inside/cover.jpg'),
   },
   {
     id: 2,
     folder: 'Mirror',
     artist: 'Thievery Corporation',
     album: 'The mirror conspiracy',
-    artistCover: thievery,
-    cover: cover3,
+    artistCover: findImage('data/thievery.jpg'),
+    cover: findImage('data/Mirror/cover.jpg'),
   },
   {
     id: 3,
     folder: 'Unleashed',
     artist: 'Massive Attack',
     album: 'Unleashed',
-    artistCover: massive,
-    cover: cover4,
+    artistCover: findImage('data/massive.jpg'),
+    cover: findImage('data/Unleashed/cover.jpg'),
   },
   {
     id: 4,
@@ -49,8 +46,8 @@ const musicData = [
     album: 'Hotel Usona',
     genre: 'Post-Rock',
     year: 2026,
-    artistCover: cover5,
-    cover: cover5,
+    artistCover: findImage('data/LostianGirl/cover.jpg'),
+    cover: findImage('data/LostianGirl/cover.jpg'),
   },
   {
     id: 5,
@@ -59,18 +56,12 @@ const musicData = [
     album: 'Young Team',
     genre: 'Post-Rock',
     year: 1997,
-    artistCover: cover6,
-    cover: cover6,
+    artistCover: findImage('data/ Mogwai Young Team/albumart.jpg'),
+    cover: findImage('data/ Mogwai Young Team/albumart.jpg'),
   },
 ];
 
 const audioFiles = Object.keys(import.meta.glob('../assets/data/**/*.{mp3,flac}'));
-const imageFiles = Object.entries(
-  import.meta.glob('../assets/data/**/*.{jpg,jpeg,png,webp}', {
-    eager: true,
-    import: 'default',
-  }),
-);
 const knownFolders = new Set(musicData.map((item) => item.folder));
 const discoveredFolders = [
   ...new Set(
