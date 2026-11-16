@@ -49,20 +49,20 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
         </div>
       </section>
 
-      <ol className="mt-8 px-3 text-slate-300">
+      <ol className="mt-8 min-w-0 px-3 text-slate-300">
         {albumTracks.map((track, index) => (
-          <li key={track.path} className="group flex items-center gap-2 border-b border-mist-400 py-3">
+          <li key={track.path} className="group flex min-w-0 items-center gap-2 border-b border-mist-400 py-3">
             <span className="w-6 shrink-0 text-slate-400">{index + 1}</span>
             <button
               type="button"
               aria-label={`Play ${track.title}`}
               onClick={() => playTrack(track)}
-              className="cursor-pointer p-1 text-slate-400 opacity-0 transition hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 group-hover:opacity-100 [@media(hover:none)]:opacity-100"
+              className="shrink-0 cursor-pointer p-1 text-slate-400 opacity-0 transition hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 group-hover:opacity-100 [@media(hover:none)]:opacity-100"
             >
               <Play aria-hidden="true" className="h-5 w-5" />
             </button>
-            <span>{track.title}</span>
-            <div className="relative ml-auto">
+            <span className="min-w-0 flex-1 break-words">{track.title}</span>
+            <div className="relative ml-auto shrink-0">
               <button
                 type="button"
                 aria-label={`More options for ${track.title}`}
