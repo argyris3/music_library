@@ -105,7 +105,11 @@ const AppContent = () => {
       />
       <main
         className={`flex min-w-0 flex-1 flex-col overflow-y-auto ${
-          pathname === '/' ? 'pb-40 lg:pb-32' : 'pb-48 lg:pb-32'
+          pathname.startsWith('/albums-details')
+            ? 'pb-64 lg:pb-32'
+            : pathname === '/'
+              ? 'pb-40 lg:pb-32'
+              : 'pb-48 lg:pb-32'
         }`}
       >
         {!pathname.startsWith('/albums-details') && <Navbar />}
