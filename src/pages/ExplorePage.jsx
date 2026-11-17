@@ -64,7 +64,7 @@ const ExplorePage = () => {
     : [];
 
   return (
-    <div className="mt-10 px-5 pb-8">
+    <div className="mt-10 px-5 pb-64 lg:pb-32">
       <div className="flex flex-wrap gap-5">
         {genres.map((genre) => (
           <button
