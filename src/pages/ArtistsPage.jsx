@@ -43,7 +43,7 @@ const ArtistsPage = ({ playlists, onAddTrackToPlaylist }) => {
             ))}
           </div>
         </div>
-        <div className="mt-2 w-[70%] px-10">
+        <div className="mt-2 w-[70%] px-10 pb-64 lg:pb-32">
           <h1 className="mb-2 pl-5 text-3xl font-semibold text-slate-300">{selectedArtist?.artist ?? 'All Artists'}</h1>
           <div className="mx-2 w-full border-b border-mist-400" aria-hidden="true" />
           <div className="mt-6 flex flex-col gap-8">

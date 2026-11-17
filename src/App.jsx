@@ -123,7 +123,7 @@ const AppContent = () => {
                   <Route
                     path="/"
                     element={
-                      <div className="flex flex-1 flex-col">
+                      <div className="flex flex-1 flex-col pb-64 lg:pb-32">
                         <section className="flex min-w-0 flex-col gap-y-8 lg:flex-row lg:gap-y-0">
                           <Playlist />
                           <RecentlyPlayed />

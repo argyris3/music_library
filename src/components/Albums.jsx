@@ -16,7 +16,7 @@ const Albums = () => {
           >
             <img src={item.cover} alt={`${item.album} cover`} className="aspect-square w-full rounded-3xl object-cover" />
             <h2 className="truncate text-center text-lg">{item.artist}</h2>
-            <p className="truncate text-md">{item.album}</p>
+            <p className="truncate text-md text-sky-400">{item.album}</p>
           </Link>
         ))}
       </div>
