@@ -11,7 +11,11 @@ import postRock from '../assets2/postRock.jpg';
 import soundtrack from '../assets2/post.jpg';
 
 const genres = [
-  { name: 'Classic Rock', image: classicRock, artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd'] },
+  {
+    name: 'Classic Rock',
+    image: classicRock,
+    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes'],
+  },
   { name: 'Hard Rock', image: hardRock, artists: [] },
   {
     name: 'Post Rock',
@@ -58,7 +62,9 @@ const ExplorePage = () => {
         (album) =>
           (album.genre && normalizeGenre(album.genre) === normalizeGenre(selectedGenre.name)) ||
           selectedGenre.artists?.includes(album.artist) ||
-          selectedGenre.artistKeywords?.some((keyword) => album.artist?.toLowerCase().includes(keyword.toLowerCase())) ||
+          selectedGenre.artistKeywords?.some((keyword) =>
+            album.artist?.toLowerCase().includes(keyword.toLowerCase()),
+          ) ||
           selectedGenre.folders?.includes(album.folder),
       )
     : [];
