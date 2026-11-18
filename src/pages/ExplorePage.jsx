@@ -8,7 +8,7 @@ import hardRock from '../assets2/hardRock.jpg';
 import jazz from '../assets2/jazz.jpg';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import postRock from '../assets2/postRock.jpg';
-import soundtrack from '../assets2/post.jpg';
+import soundtrack from '../assets2/soundtrack.jpg';
 
 const genres = [
   {
