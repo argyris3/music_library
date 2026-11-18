@@ -14,7 +14,7 @@ const genres = [
   {
     name: 'Classic Rock',
     image: classicRock,
-    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes'],
+    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes', 'The Beatles'],
   },
   { name: 'Hard Rock', image: hardRock, artists: [] },
   {
