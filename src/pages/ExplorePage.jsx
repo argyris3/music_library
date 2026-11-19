@@ -36,7 +36,7 @@ const genres = [
   {
     name: 'Jazz',
     image: jazz,
-    artists: ['Billie Holiday', 'Keith Jarret', 'Anouar Brahem', 'Vijay Iyer'],
+    artists: ['Billie Holiday', 'Keith Jarret', 'Anouar Brahem', 'Vijay Iyer', 'John Coltrane'],
   },
   { name: 'Electronic', image: electronic, artists: ['Deep Dish', 'Thievery Corporation', 'Massive Attack'] },
   {

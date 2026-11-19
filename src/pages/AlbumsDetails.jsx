@@ -18,7 +18,7 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
 
   return (
     <div className="mt-8 flex min-h-full flex-1 flex-col">
-      <section className="flex flex-col items-center gap-8 px-5 sm:flex-row sm:items-start">
+      <section className="flex flex-col items-center gap-8 rounded-3xl bg-gradient-to-br from-black via-sky-950 to-amber-200 p-6 sm:flex-row sm:items-start sm:p-8">
         <img src={album.cover} className="h-60 w-60 rounded-3xl object-cover" alt={`${album.album} cover`} />
         <div className="flex min-w-0 flex-col gap-2 text-center sm:text-left">
           <h1 className="text-3xl font-bold text-slate-300">{album.album}</h1>
