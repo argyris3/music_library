@@ -14,7 +14,7 @@ const genres = [
   {
     name: 'Classic Rock',
     image: classicRock,
-    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes', 'The Beatles'],
+    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes', 'The Beatles', 'Radiohead'],
   },
   { name: 'Hard Rock', image: hardRock, artists: [] },
   {
@@ -36,7 +36,16 @@ const genres = [
   {
     name: 'Jazz',
     image: jazz,
-    artists: ['Billie Holiday', 'Keith Jarret', 'Anouar Brahem', 'Vijay Iyer', 'John Coltrane'],
+    artists: [
+      'Billie Holiday',
+      'Keith Jarret',
+      'Anouar Brahem',
+      'Vijay Iyer',
+      'John Coltrane',
+      'John Abercrombie',
+      'Miles Davis',
+      'Chick Corea',
+    ],
   },
   { name: 'Electronic', image: electronic, artists: ['Deep Dish', 'Thievery Corporation', 'Massive Attack'] },
   {
