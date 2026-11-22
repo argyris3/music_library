@@ -53,7 +53,7 @@ const genres = [
     image: entexno,
     artists: ['Thanasis Papakonstantinou', 'Thanos Mikroutsikos'],
   },
-  { name: 'Blues', image: blues, artists: ['Billie Holiday'] },
+  { name: 'Blues', image: blues, artists: ['Billie Holiday', 'Nina Simone'] },
   {
     name: 'Soundtracks',
     image: soundtrack,
