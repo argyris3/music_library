@@ -8,16 +8,29 @@ const getRows = (result, tableName) => {
   return result.data;
 };
 
+const loadAllRows = async (musicApi, tableName) => {
+  const pageSize = 1000;
+  const rows = [];
+  let offset = 0;
+
+  while (true) {
+    const page = getRows(
+      await musicApi.from(tableName).select('*').order('id').limit(pageSize).offset(offset),
+      tableName,
+    );
+    rows.push(...page);
+    if (page.length < pageSize) return rows;
+    offset += page.length;
+  }
+};
+
 const loadExternalLibrary = async () => {
   const { musicApi } = await import('../../libraryApi/api.js');
-  const [artistResult, albumResult, trackResult] = await Promise.all([
-    musicApi.from('artists').select('*'),
-    musicApi.from('albums').select('*'),
-    musicApi.from('tracks').select('*'),
+  const [artistRows, albumRows, trackRows] = await Promise.all([
+    loadAllRows(musicApi, 'artists'),
+    loadAllRows(musicApi, 'albums'),
+    loadAllRows(musicApi, 'tracks'),
   ]);
-  const artistRows = getRows(artistResult, 'artists');
-  const albumRows = getRows(albumResult, 'albums');
-  const trackRows = getRows(trackResult, 'tracks');
   const artistsById = new Map(artistRows.map((artist) => [String(artist.id), artist]));
 
   const albums = albumRows.map((row) => {
