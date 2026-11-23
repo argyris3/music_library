@@ -27,6 +27,7 @@ const genres = [
       'Godspeed You Black Emperor',
       'Mono',
       'Slint',
+      'Swans',
       'Protomartyr',
       'Joy Division',
       'If these trees could talk',
@@ -51,7 +52,7 @@ const genres = [
   {
     name: 'Εντεχνο',
     image: entexno,
-    artists: ['Thanasis Papakonstantinou', 'Thanos Mikroutsikos'],
+    artists: ['Thanasis Papakonstantinou', 'Thanos Mikroutsikos','Σωκρατης Μαλαμας'],
   },
   { name: 'Blues', image: blues, artists: ['Billie Holiday', 'Nina Simone'] },
   {
