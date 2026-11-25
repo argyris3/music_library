@@ -14,9 +14,9 @@ const genres = [
   {
     name: 'Classic Rock',
     image: classicRock,
-    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes', 'The Beatles', 'Radiohead'],
+    artists: ['Eloy', 'Dire Straits', 'Jethro Tull', 'Pink Floyd', 'Trypes', 'The Beatles', 'Radiohead', 'The Doors'],
   },
-  { name: 'Hard Rock', image: hardRock, artists: [] },
+  { name: 'Hard Rock', image: hardRock, artists: ['Iron Maiden', 'AC/DC'] },
   {
     name: 'Post Rock',
     image: postRock,
@@ -52,7 +52,7 @@ const genres = [
   {
     name: 'Εντεχνο',
     image: entexno,
-    artists: ['Thanasis Papakonstantinou', 'Thanos Mikroutsikos','Σωκρατης Μαλαμας','Βασιλης Παπακωνσταντινου'],
+    artists: ['Thanasis Papakonstantinou', 'Thanos Mikroutsikos', 'Σωκρατης Μαλαμας', 'Βασιλης Παπακωνσταντινου'],
   },
   { name: 'Blues', image: blues, artists: ['Billie Holiday', 'Nina Simone'] },
   {
