@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mic, Play } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
+import NowPlayingIndicator from '../components/NowPlayingIndicator';
 import groupAlbumsByArtist from '../utils/groupAlbumsByArtist';
 import getTracksForAlbum from '../utils/getTracksForAlbum';
 import useMusicLibrary from '../contexts/useMusicLibrary';
@@ -9,7 +10,7 @@ import usePlayer from '../contexts/usePlayer';
 const ArtistsPage = ({ playlists, onAddTrackToPlaylist }) => {
   const [playlistTrackPath, setPlaylistTrackPath] = useState(null);
   const { albums, tracks } = useMusicLibrary();
-  const { playAlbum, playTrack } = usePlayer();
+  const { currentTrack, isPlaying, playAlbum, playTrack } = usePlayer();
   const { artistId } = useParams();
   const artistGroups = groupAlbumsByArtist(albums);
   const selectedArtist = artistGroups.find((group) => group.albums.some((album) => String(album.id) === artistId));
@@ -91,7 +92,10 @@ const ArtistsPage = ({ playlists, onAddTrackToPlaylist }) => {
                               >
                                 <Play aria-hidden="true" className="h-4 w-4" />
                               </button>
-                              <span>{track.title}</span>
+                              <div className="flex min-w-0 flex-1 items-center gap-2">
+                                <span className="min-w-0 break-words">{track.title}</span>
+                                {isPlaying && currentTrack?.path === track.path && <NowPlayingIndicator />}
+                              </div>
                               <div className="relative ml-auto">
                                 <button
                                   type="button"

@@ -8,6 +8,7 @@ import {
   Volume2,
   VolumeX,
 } from 'lucide-react';
+import NowPlayingIndicator from './NowPlayingIndicator';
 import usePlayer from '../contexts/usePlayer';
 
 const formatTime = (time) => {
@@ -125,7 +126,12 @@ const Player = ({ isHome = false }) => {
             className="h-8 w-8 shrink-0 rounded-lg object-cover lg:h-10 lg:w-10 lg:rounded-xl"
           />
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-slate-200 lg:text-base">{currentTrack.title}</p>
+            <div className="flex min-w-0 items-center gap-1">
+              <p className="min-w-0 truncate text-sm font-semibold text-slate-200 lg:text-base">
+                {currentTrack.title}
+              </p>
+              {isPlaying && <NowPlayingIndicator />}
+            </div>
             <p className="truncate text-xs text-slate-400 lg:text-sm">{currentTrack.album}</p>
           </div>
         </div>

@@ -1,13 +1,14 @@
 import { Play } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import vinylImage from '../assets2/vinyl.png';
+import NowPlayingIndicator from '../components/NowPlayingIndicator';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
 
 const PlaylistDetailsPage = ({ playlists }) => {
   const { playlistId } = useParams();
   const { tracks } = useMusicLibrary();
-  const { playTrack } = usePlayer();
+  const { currentTrack, isPlaying, playTrack } = usePlayer();
   const playlist = playlists.find((item) => item.id === playlistId);
   const playlistTracks = playlist
     ? playlist.tracks.map((path) => tracks.find((track) => track.path === path)).filter(Boolean)
@@ -51,7 +52,10 @@ const PlaylistDetailsPage = ({ playlists }) => {
                 <Play aria-hidden="true" className="h-5 w-5" />
               </button>
               <div className="min-w-0 flex-1">
-                <p className="truncate">{track.title}</p>
+                <div className="flex min-w-0 items-center gap-2">
+                  <p className="min-w-0 flex-1 truncate">{track.title}</p>
+                  {isPlaying && currentTrack?.path === track.path && <NowPlayingIndicator />}
+                </div>
                 <p className="truncate text-sm text-slate-400">
                   {track.album} · {track.albumFolder}
                 </p>

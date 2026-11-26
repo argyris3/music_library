@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Play, Shuffle } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+import NowPlayingIndicator from '../components/NowPlayingIndicator';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
 import getTracksForAlbum from '../utils/getTracksForAlbum';
@@ -8,7 +9,7 @@ import getTracksForAlbum from '../utils/getTracksForAlbum';
 const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
   const [playlistTrackPath, setPlaylistTrackPath] = useState(null);
   const { albums, tracks } = useMusicLibrary();
-  const { playAlbum, playTrack } = usePlayer();
+  const { currentTrack, isPlaying, playAlbum, playTrack } = usePlayer();
   const { albumId } = useParams();
   const selectedAlbum = albums.find((item) => String(item.id) === albumId);
   const album = selectedAlbum ?? albums.find((item) => String(item.id) === '2') ?? albums[0];
@@ -61,7 +62,10 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
             >
               <Play aria-hidden="true" className="h-5 w-5" />
             </button>
-            <span className="min-w-0 flex-1 break-words">{track.title}</span>
+            <div className="flex min-w-0 flex-1 items-center gap-2">
+              <span className="min-w-0 break-words">{track.title}</span>
+              {isPlaying && currentTrack?.path === track.path && <NowPlayingIndicator />}
+            </div>
             <div className="relative ml-auto shrink-0">
               <button
                 type="button"

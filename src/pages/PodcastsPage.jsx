@@ -1,5 +1,6 @@
 import { Pause, Play, Trash2 } from 'lucide-react';
 import { useState } from 'react';
+import NowPlayingIndicator from '../components/NowPlayingIndicator';
 import useMusicLibrary from '../contexts/useMusicLibrary';
 import usePlayer from '../contexts/usePlayer';
 
@@ -75,7 +76,10 @@ const PodcastsPage = () => {
                 </button>
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="truncate font-semibold">{episode.title}</h2>
+                <h2 className="flex min-w-0 items-center gap-2 font-semibold">
+                  <span className="truncate">{episode.title}</span>
+                  {currentTrack?.path === episode.path && isPlaying && <NowPlayingIndicator />}
+                </h2>
                 <p className="text-sm text-slate-400">Podcast</p>
               </div>
               <button
