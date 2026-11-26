@@ -77,8 +77,8 @@ const PodcastsPage = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <h2 className="flex min-w-0 items-center gap-2 font-semibold">
-                  <span className="truncate">{episode.title}</span>
                   {currentTrack?.path === episode.path && isPlaying && <NowPlayingIndicator />}
+                  <span className="truncate">{episode.title}</span>
                 </h2>
                 <p className="text-sm text-slate-400">Podcast</p>
               </div>

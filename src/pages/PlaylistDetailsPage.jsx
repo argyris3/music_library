@@ -43,18 +43,23 @@ const PlaylistDetailsPage = ({ playlists }) => {
           {playlistTracks.map((track, index) => (
             <li key={track.path} className="flex items-center gap-3 border-b border-mist-400 py-3">
               <span className="w-6 shrink-0 text-slate-400">{index + 1}</span>
-              <button
-                type="button"
-                aria-label={`Play ${track.title}`}
-                onClick={() => playTrack(track)}
-                className="cursor-pointer rounded p-1 text-slate-400 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
-              >
-                <Play aria-hidden="true" className="h-5 w-5" />
-              </button>
+              {isPlaying && currentTrack?.path === track.path ? (
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+                  <NowPlayingIndicator />
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  aria-label={`Play ${track.title}`}
+                  onClick={() => playTrack(track)}
+                  className="cursor-pointer rounded p-1 text-slate-400 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
+                >
+                  <Play aria-hidden="true" className="h-5 w-5" />
+                </button>
+              )}
               <div className="min-w-0 flex-1">
                 <div className="flex min-w-0 items-center gap-2">
                   <p className="min-w-0 flex-1 truncate">{track.title}</p>
-                  {isPlaying && currentTrack?.path === track.path && <NowPlayingIndicator />}
                 </div>
                 <p className="truncate text-sm text-slate-400">
                   {track.album} · {track.albumFolder}

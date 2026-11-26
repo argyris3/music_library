@@ -127,10 +127,10 @@ const Player = ({ isHome = false }) => {
           />
           <div className="min-w-0">
             <div className="flex min-w-0 items-center gap-1">
+              {isPlaying && <NowPlayingIndicator />}
               <p className="min-w-0 truncate text-sm font-semibold text-slate-200 lg:text-base">
                 {currentTrack.title}
               </p>
-              {isPlaying && <NowPlayingIndicator />}
             </div>
             <p className="truncate text-xs text-slate-400 lg:text-sm">{currentTrack.album}</p>
           </div>

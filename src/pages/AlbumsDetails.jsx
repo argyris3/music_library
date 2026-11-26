@@ -54,17 +54,22 @@ const AlbumsDetails = ({ playlists, onAddTrackToPlaylist }) => {
         {albumTracks.map((track, index) => (
           <li key={track.path} className="group flex min-w-0 items-center gap-2 border-b border-mist-400 py-3">
             <span className="w-6 shrink-0 text-slate-400">{index + 1}</span>
-            <button
-              type="button"
-              aria-label={`Play ${track.title}`}
-              onClick={() => playTrack(track)}
-              className="shrink-0 cursor-pointer p-1 text-slate-400 opacity-0 transition hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 group-hover:opacity-100 [@media(hover:none)]:opacity-100"
-            >
-              <Play aria-hidden="true" className="h-5 w-5" />
-            </button>
+            {isPlaying && currentTrack?.path === track.path ? (
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+                <NowPlayingIndicator />
+              </span>
+            ) : (
+              <button
+                type="button"
+                aria-label={`Play ${track.title}`}
+                onClick={() => playTrack(track)}
+                className="shrink-0 cursor-pointer p-1 text-slate-400 opacity-0 transition hover:text-white focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 group-hover:opacity-100 [@media(hover:none)]:opacity-100"
+              >
+                <Play aria-hidden="true" className="h-5 w-5" />
+              </button>
+            )}
             <div className="flex min-w-0 flex-1 items-center gap-2">
               <span className="min-w-0 break-words">{track.title}</span>
-              {isPlaying && currentTrack?.path === track.path && <NowPlayingIndicator />}
             </div>
             <div className="relative ml-auto shrink-0">
               <button

@@ -8,7 +8,7 @@ const NowPlayingIndicator = () => (
       <span
         key={dot}
         aria-hidden="true"
-        className="h-1.5 w-1.5 animate-bounce rounded-full bg-sky-400 motion-reduce:animate-none"
+        className="h-1.5 w-1.5 animate-bounce rounded-full bg-sky-300 motion-reduce:animate-none"
         style={{ animationDelay: `${dot * 0.15}s` }}
       />
     ))}
